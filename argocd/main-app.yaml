@@ -2,12 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: main-app
+  namespace: argocd
 spec:
   destination:
     namespace: sandbox
     server: 'https://kubernetes.default.svc'
   source:
-    path: argocd
+    path: argocd/apps
     repoURL: 'https://github.com/hnq90/argocd-examples.git'
     targetRevision: HEAD
   project: default

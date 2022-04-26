@@ -1,18 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-2
+  name: app-1
+  namespace: sandbox
   labels:
-    app: app-2
+    app: app-1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app-2
+      app: app-1
   template:
     metadata:
       labels:
-        app: app-2
+        app: app-1
     spec:
       containers:
       - name: nginx
@@ -23,10 +24,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-2
+  name: app-1
+  namespace: sandbox
 spec:
   ports:
   - port: 80
     targetPort: 80
   selector:
-    app: app-2
+    app: app-1
