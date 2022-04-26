@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-1
+  namespace: sandbox
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: sandbox
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/app-1
+    repoURL: https://github.com/hnq90/argocd-examples.git
+    targetRevision: HEAD
